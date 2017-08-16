@@ -34,6 +34,7 @@ import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
 import WhiskerChart from './plot/whisker-chart.js';
+import CandlestickChart from './plot/candlestick-chart.js';
 import CustomSVGExample from './plot/custom-svg-example';
 import CustomSVGAllTheMarks from './plot/custom-svg-all-the-marks';
 import FauxScatterplotChart from './plot/faux-radial-scatterplot';
@@ -151,6 +152,7 @@ export const showCase = {
   ScatterplotChart,
   ScatterplotCanvas,
   WhiskerChart,
+  CandlestickChart,
   HeatmapChart,
   ContourSeriesExample,
   WidthHeightMarginChart,

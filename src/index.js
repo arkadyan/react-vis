@@ -43,6 +43,7 @@ export AreaSeries from 'plot/series/area-series';
 export ArcSeries from 'plot/series/arc-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
 export LineMarkSeriesCanvas from 'plot/series/line-mark-series-canvas';
+export CandlestickSeries from 'plot/series/candlestick-series';
 export Hint from 'plot/hint';
 export Borders from 'plot/borders';
 export Crosshair from 'plot/crosshair';

@@ -22,37 +22,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AbstractSeries from './abstract-series';
-import LineSeries from './line-series';
 import MarkSeries from './mark-series';
+import WhiskerSeries from './whisker-series';
 
-const propTypes = {
-  ...LineSeries.propTypes,
-  lineStyle: PropTypes.object,
-  markStyle: PropTypes.object
-};
-
-class LineMarkSeries extends AbstractSeries {
-
-  static get defaultProps() {
-    return {
-      ...LineSeries.defaultProps,
-      lineStyle: {},
-      markStyle: {}
-    };
-  }
-
+class CandlestickSeries extends AbstractSeries {
   render() {
-    const {lineStyle, markStyle, style} = this.props;
+    const {markStyle, style, whiskerStyle} = this.props;
+
     return (
-      <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
-        <LineSeries {...this.props} style={{...style, ...lineStyle}}/>
+      <g className="rv-xy-plot__series rv-xy-plot__series--candlestick">
         <MarkSeries {...this.props} style={{...style, ...markStyle}}/>
+        <WhiskerSeries {...this.props} style={{...style, ...whiskerStyle}}/>
       </g>
     );
   }
 }
 
-LineMarkSeries.displayName = 'LineMarkSeries';
-LineMarkSeries.propTypes = propTypes;
+CandlestickSeries.displayName = 'CandlestickSeries';
+CandlestickSeries.propTypes = {
+  ...MarkSeries.propTypes,
+  markStyle: PropTypes.object,
+  whiskerStyle: PropTypes.object
+};
+CandlestickSeries.defaultProps = {
+  ...WhiskerSeries.defaultProps,
+  markStyle: {},
+  whiskerStyle: {}
+};
 
-export default LineMarkSeries;
+export default CandlestickSeries;

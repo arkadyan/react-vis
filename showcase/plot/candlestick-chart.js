@@ -19,40 +19,37 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import AbstractSeries from './abstract-series';
-import LineSeries from './line-series';
-import MarkSeries from './mark-series';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  VerticalGridLines,
+  HorizontalGridLines,
+  CandlestickSeries
+} from 'index';
 
-const propTypes = {
-  ...LineSeries.propTypes,
-  lineStyle: PropTypes.object,
-  markStyle: PropTypes.object
-};
-
-class LineMarkSeries extends AbstractSeries {
-
-  static get defaultProps() {
-    return {
-      ...LineSeries.defaultProps,
-      lineStyle: {},
-      markStyle: {}
-    };
-  }
-
+export default class Example extends React.Component {
   render() {
-    const {lineStyle, markStyle, style} = this.props;
     return (
-      <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
-        <LineSeries {...this.props} style={{...style, ...lineStyle}}/>
-        <MarkSeries {...this.props} style={{...style, ...markStyle}}/>
-      </g>
+      <XYPlot
+        width={300}
+        height={300}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis />
+        <YAxis />
+        <CandlestickSeries
+          className="candlestick-series-example"
+          size={5}
+          data={[
+            {x: 1, y: 10, yVariance: 4},
+            {x: 1.7, y: 12, yVariance: 7},
+            {x: 2, y: 5, yVariance: 3},
+            {x: 3, y: 15, yVariance: 10},
+            {x: 2.5, y: 7, yVariance: 4}
+          ]}/>
+      </XYPlot>
     );
   }
 }
-
-LineMarkSeries.displayName = 'LineMarkSeries';
-LineMarkSeries.propTypes = propTypes;
-
-export default LineMarkSeries;
